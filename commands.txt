@@ -1,0 +1,206 @@
+❯ touch commands.txt
+❯ git checkout -b feature-update
+Switched to a new branch 'feature-update'
+❯ mkdir reports
+❯ touch summary.md
+❯ rm summary.md
+❯ cd reports
+❯ touch summary.md
+❯ echo "This document provides a summary of the project updates." > summary.md
+❯ git add .
+❯ git status
+On branch feature-update
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   summary.md
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        ../commands.txt
+
+❯ cd ..
+❯ git add .
+❯ git status
+On branch feature-update
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   commands.txt
+        new file:   reports/summary.md
+
+❯ git reset HEAD .
+❯ git status
+On branch feature-update
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        commands.txt
+        reports/
+
+nothing added to commit but untracked files present (use "git add" to track)
+❯ git add reports
+❯ git status
+On branch feature-update
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   reports/summary.md
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        commands.txt
+
+❯ git commit -m "Add reports directory"
+[feature-update 97a3a01] Add reports directory
+ 1 file changed, 1 insertion(+)
+ create mode 100644 reports/summary.md
+❯ cd reports
+❯ touch {file1.txt, file2.txt, file3.txt}
+zsh: parse error near `}'
+❯ ls
+summary.md
+❯ cd ..
+❯ touch reports/{file1.txt, file2.txt, file3.txt}
+zsh: parse error near `}'
+❯ touch reports/{file1.txt,file2.txt,file3.txt}
+❯ ls
+README.md    commands.txt data         docs         reports      scripts
+❯ cd reports
+❯ ls
+file1.txt  file2.txt  file3.txt  summary.md
+❯ cd ..
+❯ mv data/raw-data.csv data/input-data.csv
+❯ ls data
+input-data.csv
+❯ cd scripts
+❯ ls
+01-setup.py          02-data-cleaning.py  03-data-modelling.py
+❯ mkdir backup
+❯ rmdir backup
+❯ ls
+01-setup.py          02-data-cleaning.py  03-data-modelling.py
+❯ mkdir -p scripts/backup && cp scripts/*.py scripts/backup/
+zsh: no matches found: scripts/*.py
+❯ cd ..
+❯ mkdir -p scripts/backup && cp scripts/*.py scripts/backup/
+❯ tm docs/documentation.md
+zsh: command not found: tm
+❯ rm docs/documentation.md
+❯ ls docs
+❯ git add .
+❯ git commit -m "Update project files"
+[feature-update 9a0cefc] Update project files
+ 9 files changed, 1 deletion(-)
+ rename data/raw-data.csv => commands.txt (100%)
+ create mode 100644 data/input-data.csv
+ delete mode 100644 docs/documentation.md
+ create mode 100644 reports/file1.txt
+ create mode 100644 reports/file2.txt
+ create mode 100644 reports/file3.txt
+ create mode 100644 scripts/backup/01-setup.py
+ create mode 100644 scripts/backup/02-data-cleaning.py
+ create mode 100644 scripts/backup/03-data-modelling.py
+❯ touch ".gitignore"
+❯ nano .gitignore
+❯ cat .gitignore
+```{markdown}
+temp/
+dataset0?.csv
+```
+❯ git add .gitignore && git commit -m "Add .gitignore file"
+[feature-update ca1d050] Add .gitignore file
+ 1 file changed, 4 insertions(+)
+ create mode 100644 .gitignore
+❯ git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+❯ git merge feature-update
+Updating 651c914..ca1d050
+Fast-forward
+ .gitignore                          | 4 ++++
+ data/raw-data.csv => commands.txt   | 0
+ data/input-data.csv                 | 0
+ docs/documentation.md               | 1 -
+ reports/file1.txt                   | 0
+ reports/file2.txt                   | 0
+ reports/file3.txt                   | 0
+ reports/summary.md                  | 1 +
+ scripts/backup/01-setup.py          | 0
+ scripts/backup/02-data-cleaning.py  | 0
+ scripts/backup/03-data-modelling.py | 0
+ 11 files changed, 5 insertions(+), 1 deletion(-)
+ create mode 100644 .gitignore
+ rename data/raw-data.csv => commands.txt (100%)
+ create mode 100644 data/input-data.csv
+ delete mode 100644 docs/documentation.md
+ create mode 100644 reports/file1.txt
+ create mode 100644 reports/file2.txt
+ create mode 100644 reports/file3.txt
+ create mode 100644 reports/summary.md
+ create mode 100644 scripts/backup/01-setup.py
+ create mode 100644 scripts/backup/02-data-cleaning.py
+ create mode 100644 scripts/backup/03-data-modelling.py
+❯ git status
+On branch main
+Your branch is ahead of 'origin/main' by 3 commits.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+❯ git status
+On branch main
+Your branch is ahead of 'origin/main' by 3 commits.
+  (use "git push" to publish your local commits)
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   commands.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+❯ git add . && git commit -m "update commands.txt"
+[main 01535fb] update commands.txt
+ 1 file changed, 139 insertions(+)
+❯ git push
+Enumerating objects: 18, done.
+Counting objects: 100% (18/18), done.
+Delta compression using up to 10 threads
+Compressing objects: 100% (12/12), done.
+Writing objects: 100% (15/15), 2.53 KiB | 2.53 MiB/s, done.
+Total 15 (delta 3), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (3/3), completed with 1 local object.
+To https://github.com/gabrielischwartz/qtm350-quiz01.git
+   651c914..01535fb  main -> main
+❯ git branch -d feature-update
+Deleted branch feature-update (was ca1d050).
+❯ git push origin --delete feature-update
+error: unable to delete 'feature-update': remote ref does not exist
+error: failed to push some refs to 'https://github.com/gabrielischwartz/qtm350-quiz01.git'
+❯ git fetch origin
+❯ git branch -r
+❯ git push origin --delete feature-update
+error: unable to delete 'feature-update': remote ref does not exist
+error: failed to push some refs to 'https://github.com/gabrielischwartz/qtm350-quiz01.git'
+
+Bonus 1:
+I clicked create pull request on github and request to merge my forked repository into your main repository
+
+Bonus 2:
+❯ git rebase -i HEAD~2
+Successfully rebased and updated refs/heads/main.
+❯ git rebase -i HEAD~2
+[detached HEAD 4779470] Add .gitignore file
+ Date: Mon Sep 23 14:56:46 2024 -0400
+ 2 files changed, 143 insertions(+)
+ create mode 100644 .gitignore
+Successfully rebased and updated refs/heads/main.
+
+I ran the above and changed the word "pick" to "squash" on the second commit to squash it into the first
+
+Bonus 3:
+inside .git/hooks I created a file called pre-commit and typed this in:
+
+if git status --porcelain | grep -q 'README.md'; then
+  echo "README.md is not updated. Please commit README.md to the remote repository."
+else
+  echo "README.md is updated. Proceeding with commit."  exit 1
+fi
+
+the first line runs git status with the porcelain option to make the output cleaner. The next line reads that output to see if the file "README.md is in it"
+if it is not in the output that means it is up to date, and if not it returns the warning to update before commiting 
