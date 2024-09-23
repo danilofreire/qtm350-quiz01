@@ -17,4 +17,10 @@
    cd ..
    cp scripts/*.py scripts/backup
 15.rm docs/documentation.md
+16.git add -A
+   git commit -m "Update project"
+17.touch g.gitignore
+18. echo "temp/" >> g.gitignore
+    echo "dataset0?.csv" >> g.gitignore
+19.cat -n g.gitignore
 
