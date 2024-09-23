@@ -1,0 +1,10 @@
+2. git clone git@github.com:KJP952/qtm350-quiz01.git
+3. cd qtm350-quiz01 
+4. touch commands.txt
+5.git branch feature-update
+  git checkout feature-update
+6.mkdir reports
+7.cd reports
+  touch summary.md
+8.echo "This document provides a summary of the project updates." >> summary.md 
+9.
