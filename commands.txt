@@ -1,0 +1,7 @@
+git clone https://github.com/caitlinwei1/qtm350-quiz01
+cd qtm350-quiz01
+touch commands.txt
+git checkout -b feature-update
+mkdir reports
+touch reports/summary.md
+git add reports/
