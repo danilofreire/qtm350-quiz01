@@ -7,4 +7,14 @@
 7.cd reports
   touch summary.md
 8.echo "This document provides a summary of the project updates." >> summary.md 
-9.
+9.git add -A
+10.git commit -m "Add reports directory"
+12.touch {file1,file2,file3}.txt
+13. cd ..
+    mv ./data/raw-data.csv ./data/input-data.csv
+14.cd scripts
+   mkdir backup
+   cd ..
+   cp scripts/*.py scripts/backup
+15.rm docs/documentation.md
+
