@@ -1,0 +1,8 @@
+touch commands.txt
+git checkout -b feature-update
+mkdir reports
+cd reports
+touch summary.md
+echo 'This document provides a summary of the project updates.' > summary.md
+git add reports/summary.md
+git commit -m 'Add reports directory'
